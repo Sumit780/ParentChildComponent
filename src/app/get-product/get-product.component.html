@@ -1,0 +1,22 @@
+<!-- <div class="container">
+    <select class="form-control" (click)="sendMessage()" [(ngModel)]="itemName">
+    <option *ngFor="let item of products">
+      {{item}}
+    </option>
+  </select>
+</div> -->
+
+<div class="container">
+    <div class="row-7 bg-light">
+        <div class="col">
+            <select class="form-control" (click)="onClick()" [(ngModel)]="CategoryName">
+              <option value="">Category</option>
+              <option *ngFor="let catName of categorys">
+                {{catName}}
+              </option>
+            </select>
+        </div>
+
+    </div>
+
+</div>
