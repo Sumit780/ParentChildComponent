@@ -1,21 +1,32 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { NameBool, allCategories } from "../name-bool";
+import { element } from '@angular/core/src/render3';
 
 @Component({
-  selector: 'app-get-product',
-  templateUrl: './get-product.component.html',
-  styleUrls: ['./get-product.component.css']
+  selector: "app-get-product",
+  templateUrl: "./get-product.component.html",
+  styleUrls: ["./get-product.component.css"]
 })
 export class GetProductComponent implements OnInit {
-  @Output()  sendData = new EventEmitter();
-  // products:string[]=['Mobile','Tv','Laptop'];  
-     categorys:string[]=['Chocolates','Toothpaste','Chips','Beverages'];
-     CategoryName:string="";
-   
+  @Output() sendData = new EventEmitter();
+  // products:string[]=['Mobile','Tv','Laptop'];
+  //  categorys:string[]=['Chocolates','Toothpaste','Chips','Beverages'];
+  //  CategoryName:string="";
 
-     onClick(){
-      console.log(this.CategoryName);
-      this.sendData.emit(this.CategoryName);
-     }
+  //  onClick(){
+  //   console.log(this.CategoryName);
+  //   this.sendData.emit(this.CategoryName);
+  //  }
+
+  categorys: NameBool[] = allCategories;
+
+  filter() {
+    let filteredArray = this.categorys
+      .filter(item => item.value == true)
+      .map(element => element.name);
+    this.sendData.emit(filteredArray);
+    console.log(filteredArray);
+  }
 
   // itemName:string="";
 
@@ -23,9 +34,7 @@ export class GetProductComponent implements OnInit {
   //    this.sendData.emit(this.itemName);
   //    console.log(this.itemName)
   // }
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
