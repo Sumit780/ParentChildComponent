@@ -17,15 +17,16 @@ export class GetProductComponent implements OnInit {
   //   console.log(this.CategoryName);
   //   this.sendData.emit(this.CategoryName);
   //  }
-
-  categorys: NameBool[] = allCategories;
+  
+   price:number[]=[0,100];
+   categorys: NameBool[] = allCategories;
 
   filter() {
-    let filteredArray = this.categorys
-      .filter(item => item.value == true)
-      .map(element => element.name);
-    this.sendData.emit(filteredArray);
-    console.log(filteredArray);
+  
+    // let filteredArray = this.categorys.filter(item => item.value == true).map(element => element.name);
+    // this.sendData.emit(filteredArray);
+    this.sendData.emit(this.price);
+    console.log("child",this.price)
   }
 
   // itemName:string="";

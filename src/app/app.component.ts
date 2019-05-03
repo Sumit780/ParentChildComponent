@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Products, allProdoductData } from './products';
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,17 +11,30 @@ import { Products, allProdoductData } from './products';
 export class AppComponent  {
     allProductsArray=[];
     products:Products[]=allProdoductData;
-    data:Products[]=[];   
-
-    newChange(choosingCategory:string){
+    data:Products[]=[]; 
       
-     if(choosingCategory.length>0){
-       let arrray=[];
-       for(let i=0;i<choosingCategory.length;i++){
-         arrray=arrray.concat(this.products.filter(item=> item.category==choosingCategory[i]));
-       }
+
+    newChange(price:any){
+   
+    //   console.log("parentdata",choosingCategory,)
+    //  if(choosingCategory.length>0){
+    //    let arrray:Products[]=[];
+    //    for(let i=0;i<choosingCategory.length;i++){
+    //      arrray=arrray.concat(this.products.filter(item=>item.category == choosingCategory[i]));
+    //    }
+    //   let arr2 = arrray.filter(item => {
+    //     item.price>=min && item.price<=max
+    //     console.log("itemprice",item.price)
+    //     console.log("max",maximum)
+    //     console.log("min",minimum)  
+    //     console.log("cond1",item.price>=minimum)
+    //     console.log("cond2",item.price<=maximum)        
+    //     });
+   let arrray=[];
+   if(price.length>0){
+         arrray=arrray.concat(this.products.filter(item=>item.price>=price[0]&&item.price<=price[1]));
        this.allProductsArray=arrray;
-       console.log(this.allProductsArray)
+     
      }else{
        this.allProductsArray=this.products;
      }
@@ -33,5 +48,7 @@ export class AppComponent  {
   // this.count++;
   // }
  
-
+  // console.log("1",item.category == choosingCategory[i])
+  // console.log("2",item.category )
+  // console.log("3",choosingCategory[i])
 }
